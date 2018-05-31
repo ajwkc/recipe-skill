@@ -29,7 +29,7 @@ class RecipeSkill(MycroftSkill):
         super(RecipeSkill, self).__init__(name="RecipeSkill")                        
     
     # Listens for "how do I cook ____________"
-    @intent_handler(IntentBuilder("RecipeIntent").require("Query").require("Cook").require("Food")
+    @intent_handler(IntentBuilder("RecipeIntent").require("Query").require("Cook").require("Food"))
     def handle_recipe_intent(self,message):
         # Searches for "Food" and grabs the first result
         food = message.data.get("Food")
