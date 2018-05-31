@@ -13,8 +13,7 @@
 from adapt.intent import IntentBuilder
 from mycroft.skills.core import MycroftSkill
 from mycroft.util.log import getLogger
-from yummly import client
-from yummly.client import Client
+from yummly import Client
 import time
 
 __author__ = 'ajwkc'
