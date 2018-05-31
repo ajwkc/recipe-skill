@@ -13,7 +13,7 @@
 from adapt.intent import IntentBuilder
 from mycroft.skills.core import MycroftSkill
 from mycroft.util.log import getLogger
-from yummly.client import Client
+from yummly import client
 import time
 
 __author__ = 'ajwkc'
@@ -21,7 +21,7 @@ __author__ = 'ajwkc'
 LOGGER = getLogger(__name__)
 
 # Preps the Yummly API ID and key
-client = Client(api_id="578ccc53", api_key="1d102bfd626c6a634b477219350a6233", timeout=5.0, retries=0)
+yclient = Client(api_id="578ccc53", api_key="1d102bfd626c6a634b477219350a6233", timeout=5.0, retries=0)
 
 
 class RecipeSkill(MycroftSkill):
@@ -35,9 +35,9 @@ class RecipeSkill(MycroftSkill):
     def handle_recipe_intent(self, message):
         # Searches for "Food" and grabs the first result
         food = message.data.get("Food")
-        search = client.search(food)
+        search = yclient.search(food)
         match = search.matches[0]
-        recipe = client.recipe(match.id)
+        recipe = yclient.recipe(match.id)
 
         # Reads the ingredients
         self.speak_dialog("Read")
