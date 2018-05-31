@@ -13,7 +13,7 @@
 from adapt.intent import IntentBuilder
 from mycroft.skills.core import MycroftSkill
 from mycroft.util.log import getLogger
-from yummly import client
+from yummly import *
 import time
 
 __author__ = 'ajwkc'
@@ -21,7 +21,7 @@ __author__ = 'ajwkc'
 LOGGER = getLogger(__name__)
 
 # Preps the Yummly API ID and key
-client = client(api_id="578ccc53", api_key="1d102bfd626c6a634b477219350a6233", timeout=5.0, retries=0)
+client = Client(api_id="578ccc53", api_key="1d102bfd626c6a634b477219350a6233", timeout=5.0, retries=0)
 
 class RecipeSkill(MycroftSkill):
 
