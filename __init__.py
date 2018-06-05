@@ -36,7 +36,7 @@ class RecipeSkill(MycroftSkill):
     @intent_handler(IntentBuilder("RecipeIntent").require("Query").require("Cook").require("Food"))
     def handle_recipe_intent(self, message):
         # Searches for "Food" and grabs the first result
-        food = message.data.get("Food")
+        food = message.data.get("Food").lower()
         search = yclient.search(food)
         match = search.matches[0]
         recipe = yclient.recipe(match.id)
