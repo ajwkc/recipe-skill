@@ -23,7 +23,7 @@ __author__ = 'ajwkc'
 LOGGER = getLogger(__name__)
 
 # Preps the Yummly API ID and key
-yclient = Client(api_id="578ccc53", api_key="1d102bfd626c6a634b477219350a6233", timeout=5.0, retries=0)
+client = Client(api_id="578ccc53", api_key="1d102bfd626c6a634b477219350a6233", timeout=5.0, retries=0)
 
 
 class RecipeSkill(MycroftSkill):
@@ -37,9 +37,9 @@ class RecipeSkill(MycroftSkill):
     def handle_recipe_intent(self, message):
         # Searches for "Food" and grabs the first result
         food = message.data.['Food']
-        search = yclient.search(food)
+        search = client.search(food)
         match = search.matches[0]
-        recipe = yclient.recipe(match.id)
+        recipe = client.recipe(match.id)
 
         # Reads the ingredients
         self.speak_dialog("Read")
